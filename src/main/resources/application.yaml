@@ -1,18 +1,29 @@
 spring:
+  application:
+    name: ms-email
+  config:
+    import: "optional:configserver:http://localhost:8088"
+
   mail:
-    host: ${SPRING_MAIL_HOST}
-    port: ${SPRING_MAIL_PORT}
-    username: ${SPRING_MAIL_USERNAME}
-    password: ${SPRING_MAIL_PASSWORD}
+    host: smtp.gmail.com
+    port: 587
+    username: adelabot.noresponder@gmail.com
+    password: hvmqkxwfbpcbngpa
     properties:
       mail:
         smtp:
-          auth: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH}
+          auth: true
           starttls:
-            enable: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE}
+            enable: true
 
-  application:
-    name: mail-sender
+server:
+  port: 9003  # Permite puerto aleatorio para varias instancias
 
-  config:
-    import: "optional:configserver:http://localhost:8088"
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    hostname: localhost

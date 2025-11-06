@@ -11,12 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class EmailService {
 
-    private final JavaMailSender mailSender;
-
-    
-    public EmailService(JavaMailSender mailSender) {
-        this.mailSender = mailSender;
-    }
+    @Autowired private JavaMailSender mailSender;
 
     /**
      * Envía un correo de bienvenida al estudiante asignado a un grupo.
