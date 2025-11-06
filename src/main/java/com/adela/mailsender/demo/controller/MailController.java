@@ -2,6 +2,8 @@ package com.adela.mailsender.demo.controller;
 
 import com.adela.mailsender.demo.service.EmailService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,7 @@ public class MailController {
     @PostMapping("/send")
     public ResponseEntity<String> sendMail(@RequestBody EmailRequest request) {
         emailService.sendEmail(request.getTo(), request.getSubject(), request.getBody());
+        System.out.println("Llego hasta aca");
         return ResponseEntity.ok("Correo enviado a " + request.getTo());
     }
 }
