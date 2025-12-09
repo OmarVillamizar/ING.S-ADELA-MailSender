@@ -17,7 +17,7 @@ public class MailController {
     @PostMapping("/send")
     public ResponseEntity<String> sendMail(@RequestBody EmailRequest request) {
         emailService.sendEmail(request.getTo(), request.getSubject(), request.getBody());
-        System.out.println("Llego hasta aca");
+        System.out.println("PROCESO DE ENVÍO DE CORREOS...");
         return ResponseEntity.ok("Correo enviado a " + request.getTo());
     }
 }
